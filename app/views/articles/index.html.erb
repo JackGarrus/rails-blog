@@ -1,0 +1,23 @@
+<h2>Blog</h2>
+
+<ul>
+  <% @articles.each do |article| %> <!--|param| è come 'el' che usi nel forEach di js-->
+    <li>
+      <%= link_to article.title, article %>
+     <!-- 
+        Che sarebbe link_to "Article", @articles, p
+        link_to "Article", article_path(@articles)
+        # => <a href="/articles/1">Article</a>
+      -->
+
+      <!--
+      Altrimenti, senza link_to:
+      <a href="<%= article_path(article) %>"> 
+      => <a href="/articles/<%= article.id %>"> 
+          <%= article.title %>
+        </a>
+      article_path è un helper creato automaticamente dalla dichiarazione di resources :articles in routes.rb
+      -->
+    </li>
+  <% end %>
+</ul>
